@@ -1,16 +1,33 @@
 .naviBar{
-    background-color: #3C327B;
     display: flex;
     justify-content: space-evenly;
+    background-color: #3C327B;
+    height: 55px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 .Navileft{
     display: flex;
+    border: 1px solid red;
+    width: 40%;
+    button{
+        border: 1px solid blue;
+        background: none;
+        margin-left: 10%;
+        font-size: 12px;
+    }
+}
+.Navilogo{
+    margin: auto;
+    text-align: center;
 }
 .Naviright{
     display: flex;
-}
-button{
-    border: 1px solid #3C327B;
-    background: none;
-    margin: 2%;
+    border: 1px solid red;
+    width: 40%;
+    button{
+        border: 1px solid blue;
+        background: none;
+        margin-left: 10%;
+        font-size: 12px;
+    }
 }

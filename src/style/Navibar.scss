@@ -1,5 +1,13 @@
 .naviBar{
     background-color: #3C327B;
+    display: flex;
+    justify-content: space-evenly;
+}
+.Navileft{
+    display: flex;
+}
+.Naviright{
+    display: flex;
 }
 button{
     border: 1px solid #3C327B;

@@ -1,12 +1,13 @@
 import { Container } from 'react-bootstrap';
 import '../src/style/AppStyle.scss';
-import Index from "./pages/Index";
+// import Index from "./pages/Index";
+import Homepage from './pages/Homepage';
 
 function App() {
   return (
     <div>
       <Container className='appStyle'>
-        <Index/>
+        <Homepage/>
       </Container>
     </div>
     

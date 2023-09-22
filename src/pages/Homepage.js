@@ -1,3 +1,4 @@
+import Footerbar from "../components/Footerbar/Footerbar";
 import HomeIllustrator from "../components/Homepage/HomeIllustrator";
 import HomePhotoshop from "../components/Homepage/HomePhotoshop";
 import HomeSearch from "../components/Homepage/HomeSearch";
@@ -11,6 +12,7 @@ export default function Homepage(){
             <HomeSearch></HomeSearch>
             <HomePhotoshop></HomePhotoshop>
             <HomeIllustrator></HomeIllustrator>
+            <Footerbar></Footerbar>
         </div>
         
     );

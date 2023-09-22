@@ -23,11 +23,12 @@
 .Naviright{
     display: flex;
     border: 1px solid red;
+    justify-content: flex-end;
     width: 40%;
     button{
         border: 1px solid blue;
         background: none;
-        margin-left: 10%;
+        margin-right: 5%;
         font-size: 18px;
     }
 }

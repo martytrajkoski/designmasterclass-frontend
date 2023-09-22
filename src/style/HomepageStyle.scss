@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand+SC&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oxygen:wght@300&family=Patrick+Hand+SC&display=swap');
+
+.homepage{
+    background-color: #C4C4C4;
+}
+
+.homeSearch{
+    background-color: #6D659C;
+    text-align: center;
+    align-items: center;
+    font-family: 'Patrick Hand SC';
+    font-size: 40px;
+    height: 280px;
+    padding: 50px;
+    input{
+        height: 45px;
+        width: 450px;
+        padding-left: 30px;
+        border: 1px solid #3C327B;
+        border-radius: 36px 0 0 36px;
+        font-size: 25px;
+    }
+    button{
+        height: 45px;
+        width: 70px;
+        border: 1px solid #3C327B;
+        border-radius: 0 36px 36px 0;
+        background-color: #FC9C4B;
+    }
+}
+
+.vector1{
+    background-image: url('../media/Homepage/Vector\ 1.png');
+    background-size: auto 100%;
+    margin-top: -1px;
+}
+
+.vector2{
+    background-image: url('../media/Homepage/Vector\ 2.png');
+    background-size: auto 100%;
+}
+
+.homeIllustrator{
+    background-color: #FFAF6C;
+}
+
+.homeCard{
+    text-align: center;
+    height: 300px;
+    padding: 50px 0 50px 0;
+    .homeTitle{
+        font-family: 'Oxygen', sans-serif;
+        font-size: 40px;
+        color: #3C327B;
+        
+    }
+    .homeCaption{
+        font-family: 'Oxygen', sans-serif;
+        font-size: 18px;
+    }
+    button{
+        color: black;
+        border: 1px solid #3C327B;
+        border-radius: 36px;
+        font-size: 18px;
+        font-family: 'Oxygen', sans-serif;
+        box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.3);
+    }
+    img{
+        box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.3);
+    }
+}

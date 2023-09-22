@@ -1,14 +1,13 @@
-import { Container } from 'react-bootstrap';
+import { Container, Row } from 'react-bootstrap';
 import '../src/style/AppStyle.scss';
+import 'bootstrap/dist/css/bootstrap.min.css';
 // import Index from "./pages/Index";
 import Homepage from './pages/Homepage';
 
 function App() {
   return (
-    <div>
-      <Container className='appStyle'>
-        <Homepage/>
-      </Container>
+    <div className='appStyle'>
+      <Homepage/>
     </div>
     
   );

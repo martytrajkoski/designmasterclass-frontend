@@ -6,7 +6,7 @@ export default function Login(){
     return(
         <div className="loginBg">
             <img src={require('../media/Login & Signup/designmasterclass.png')}/>
-            <Button className="closeBtn"><img src={require('../media/Login & Signup/close white.png')} style={{width: "50px"}}/></Button>
+            <Button className="closeBtn" href="/home"><img src={require('../media/Login & Signup/close white.png')} style={{width: "50px"}}/></Button>
             <LoginCard/>
         </div>
     );

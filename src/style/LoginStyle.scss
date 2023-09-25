@@ -1,0 +1,63 @@
+
+.loginBg {
+    background-color: #C4C4C4;
+    padding-top: 3%;
+    height: 100vh;
+    img{
+        width: 18%;
+        margin-left: 5%;
+        margin-bottom: 5%;
+    }
+    .btn{
+        background: none;
+        border: 0;
+        width: 50px;
+        float: right;
+        margin-right: 10%;
+        :hover{
+            background-color: none;
+        }
+    }
+}
+.loginCard{
+    margin: auto;
+    width: 40%;
+    background-color: #3C327B;
+    border-radius: 30px;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.3);
+    .cardTitle{
+        font-size: 35px;
+        font-weight: 600;
+        color: #FC9C4B;
+        padding-top: 2%;
+        padding-left: 3%;
+    }
+    .loginForm{
+        width: 70%;
+        margin: auto;
+        padding: 2%;
+        height: 300px;
+        input{
+            text-align: center;
+            width: 100%;
+            box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.3);
+        }
+        label{
+            color: #FC9C4B;
+        }
+        .btn {
+            background-color: #FC9C4B;
+            color: black;
+            border: 1px solid #fc9c4b;
+            border-radius: 30px;
+            width: 100%;
+            margin: auto;
+            box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.3);
+            &:hover{
+                border: 1px solid #b97136;
+                background-color: #b97136;
+                color: white;
+            }
+        }
+    }   
+}

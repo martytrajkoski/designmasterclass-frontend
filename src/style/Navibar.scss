@@ -7,13 +7,19 @@
 }
 .Navileft{
     display: flex;
-    border: 1px solid red;
     width: 40%;
+    .dropdown{
+        margin-left: 10%;
+        
+    }
     button{
-        border: 1px solid blue;
         background: none;
+        border: 0px;
         margin-left: 10%;
         font-size: 18px;
+    }
+    .btn:hover{
+        background-color: #c77634;
     }
 }
 .Navilogo{
@@ -22,13 +28,15 @@
 }
 .Naviright{
     display: flex;
-    border: 1px solid red;
     justify-content: flex-end;
     width: 40%;
     button{
-        border: 1px solid blue;
         background: none;
+        border: 0px;
         margin-right: 5%;
         font-size: 18px;
+    }
+    .btn:hover{
+        background-color: #c77634;
     }
 }

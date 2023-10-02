@@ -14,7 +14,7 @@ function App() {
   return (
     <div className='appStyle'>
       <Routes>
-        <Route path="/home" element={<Homepage/>}/>
+        <Route path="/" element={<Homepage/>}/>
         <Route path="/profile" element={<Profile/>}/>
         <Route path="/login" element={<LogIn/>}/>
         <Route path="/signup" element={<SignUp/>}/>

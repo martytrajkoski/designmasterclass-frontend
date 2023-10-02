@@ -39,7 +39,7 @@ export default function ProfileComponent(){
             <Container>
                 <Card className="profileCard">
                     <Card.Body>
-                        <Card.Text className="profileInfo">Name: </Card.Text>    
+                        <Card.Text className="profileInfo">First Name: </Card.Text>    
                         {/* {userInfo?.firstName}  posle name*/}
                         <Card.Text className="profileInfo">Last Name: </Card.Text>
                         {/* {userInfo?.lastName} */}

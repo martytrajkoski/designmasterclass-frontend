@@ -8,7 +8,7 @@ export default function HomePhotoshop(){
                 <Col>
                     <p className="homeTitle">Adobe Photoshop</p>
                     <p className="homeCaption">Platform for editing raster graphics</p>
-                    <Button style={{backgroundColor:'#FC9C4B'}}>Learn Photoshop</Button>
+                    <Button style={{backgroundColor:'#FC9C4B'}} href="/photoshop">Learn Photoshop</Button>
                 </Col>
                 <Col>
                     <img src={require('../../media/Homepage/photoshop.png')} style={{width: '400px'}}/>

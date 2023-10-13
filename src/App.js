@@ -9,6 +9,7 @@ import LogIn from './pages/LogIn';
 import SignUp from './pages/SignUp';
 import ProfileComponent from './components/Profile/ProfileComponent';
 import SubsctiptionComponent from './components/Profile/SubscriptionComponent'
+import Photoshop from './pages/Photoshop';
 
 function App() {
   return (
@@ -20,6 +21,8 @@ function App() {
         <Route path="/signup" element={<SignUp/>}/>
         <Route path="/profile" element={<ProfileComponent/>}/>
         <Route path="/subscription" element={<SubsctiptionComponent/>}/>
+        <Route path="/profile" element={<ProfileComponent/>}/>
+        <Route path='/photoshop' element={<Photoshop/>}/>
       </Routes>
     </div>
     

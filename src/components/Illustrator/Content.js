@@ -29,7 +29,7 @@ export default function Content(){
     }, []);
     
     return (
-        <div style={{ border: '1px solid blue' }}>
+        <div style={{ border: '1px solid blue', width: '70%' }}>
 
             {data.map((tutorialData, i) => {
                 return (
@@ -41,7 +41,7 @@ export default function Content(){
                             <Card.Text>{tutorialData.content3}</Card.Text>
                             <Card.Text>{tutorialData.content4}</Card.Text>
                             <Card.Text>{tutorialData.content5}</Card.Text>
-                            <img src={tutorialData.image1} />
+                            <img src={tutorialData.image1} width={'500px'}/>
                         </Card.Body>
                     </Card>
                 )

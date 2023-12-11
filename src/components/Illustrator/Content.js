@@ -5,16 +5,8 @@ import { useEffect } from 'react';
 
 export default function Content(){
 
-    const [tutorial, setTutorial] = useState([])
     const [data, setData] = useState([]);
 
-    // axios.get('http://127.0.0.1:8000/api/tutorialillustrator/')
-    //     .then(res => {
-    //         setTutorial(res.data)
-    //     }).catch(err => {
-    //         console.log(err)
-    //     })
-    
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -29,23 +21,32 @@ export default function Content(){
     }, []);
     
     return (
-        <div style={{ border: '1px solid blue', width: '70%' }}>
-
+        <div style={{ width: '100%' }}>
             {data.map((tutorialData, i) => {
                 return (
-                    <Card style={{ width: '80%' }} className="contentCard" key={i}>
+                    <Card className="contentCard" key={i}>
                         <Card.Body>
-                            <Card.Title id={tutorialData.name}>{tutorialData.name}</Card.Title>
+                            <Card.Title id={`illustrator${i}`} >{tutorialData.name}</Card.Title>
                             <Card.Text>{tutorialData.content1}</Card.Text>
                             <Card.Text>{tutorialData.content2}</Card.Text>
                             <Card.Text>{tutorialData.content3}</Card.Text>
                             <Card.Text>{tutorialData.content4}</Card.Text>
                             <Card.Text>{tutorialData.content5}</Card.Text>
-                            <img src={tutorialData.image1} width={'500px'}/>
+                            <img src={tutorialData.image1} width={'500px'} />
                         </Card.Body>
                     </Card>
                 )
             })}
+            <div style={{textAlign: "center"}}>
+                <img src={require('../../media/Icons/up-arrow.png')} 
+                    onClick={(e) => {
+                    e.preventDefault();
+                    window.location.href = `#illustrator1`;
+                    }}
+                    height={'80px'} 
+                    />
+            </div>
+            
         </div>
     );
 }

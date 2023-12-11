@@ -8,38 +8,49 @@ import {
   CDBSidebarMenuItem,
 } from 'cdbreact';
 import { NavLink } from 'react-router-dom';
-import Content from './Content';
+import { useEffect } from 'react';
 import { useState } from 'react';
 import axios from 'axios';
+import { Button } from 'react-bootstrap';
 
 export default function SideBar() {
 
-    const [name, setName] = useState([])
+    const [data, setData] = useState([]);
 
-    axios.get('http://127.0.0.1:8000/api/tutorialillustrator/')
-    .then(res => {
-        setName(res.data)
-    }).catch(err => {
-        console.log(err)
-    })
+    useEffect(() => {
+      const fetchData = async () => {
+          try {
+              const response = await axios.get('http://127.0.0.1:8000/api/tutorialillustrator/');
+              setData(response.data);
+          } catch (error) {
+              console.error('Error fetching data:', error);
+          }
+      };
+
+      fetchData();
+  }, []);
 
     return(
-        // <div style={{ display: 'flex', overflow: 'scroll initial'}}>
-        <CDBSidebar textColor="#fff" style={{height: '100%', border: '1px solid red'}}>
-          <CDBSidebarContent className="sidebar-content" style={{backgroundColor: "#554f7a"}}>
-                <CDBSidebarMenu>
-              {name.map((tutorialName, i) => {
-                return (
-                  <NavLink exact to='' activeClassName="activeClicked" key={i}>
-                    <CDBSidebarMenuItem>{tutorialName.name}</CDBSidebarMenuItem>
-                  </NavLink>
-                )
-              })}
-                </CDBSidebarMenu>
-          </CDBSidebarContent>
-        </CDBSidebar>
-        // <Content/>
-      // </div>
+      <div className='sideBar'>
+        <div className="sidebar-content" style={{ backgroundColor: '#554f7a' }}>
+          <div className='sidebar-link'>
+            {data.map((tutorialName, i) => {
+              return (
+                <Button 
+                onClick={(e) => {
+                  e.preventDefault();
+                  window.location.href = `#illustrator${i}`;
+                }} 
+                activeClassName="activeClicked" 
+                key={i}
+                >
+                  <CDBSidebarMenuItem>{tutorialName.name}</CDBSidebarMenuItem>
+                </Button>
+              )
+            })}
+          </div>
+        </div>
+      </div>
     );
    
 };

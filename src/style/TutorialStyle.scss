@@ -1,5 +1,39 @@
+.illustrator{
+    display: flex;
+    height: 100%;
+}
+
 .contentCard{
-    margin: 10%;
-    width: 50%;
+    margin: 3%;
+    width: 80%;
+}
+
+.sideBar{
+    flex: 1;
+    width: 20%;
+    background-color: '#554f7a';
+}
+.sidebar-content{
+    height: 100%;
+    text-align: center;
     border: 1px solid red;
+    img{
+        width: 100px;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+    }
+    
+    .btn{
+        width: 100%;
+        background: none;
+        border: 0;
+    }
+    .btn:hover{
+        background-color: white;
+        color: black;
+    }
+}
+.sidebar-link{
+    margin-top: 10%;
 }

@@ -24,8 +24,8 @@ export default function SideBar() {
     })
 
     return(
-        <div style={{ display: 'flex', overflow: 'scroll initial'}}>
-        <CDBSidebar textColor="#fff" style={{height: '100%'}}>
+        // <div style={{ display: 'flex', overflow: 'scroll initial'}}>
+        <CDBSidebar textColor="#fff" style={{height: '100%', border: '1px solid red'}}>
           <CDBSidebarContent className="sidebar-content" style={{backgroundColor: "#554f7a"}}>
                 <CDBSidebarMenu>
               {name.map((tutorialName, i) => {
@@ -38,8 +38,8 @@ export default function SideBar() {
                 </CDBSidebarMenu>
           </CDBSidebarContent>
         </CDBSidebar>
-        <Content/>
-      </div>
+        // <Content/>
+      // </div>
     );
    
 };

@@ -85,9 +85,9 @@ export default function ProfileComponent(){
                             type="submit"
                             className="btn btn-primary btn-block subscriptionInfo"
                             // onClick={handleSubmit}
-                        >
+                            >
                             Submit
-                        </button>
+                            </button>
                         </div>
                     </form>
             </Container>

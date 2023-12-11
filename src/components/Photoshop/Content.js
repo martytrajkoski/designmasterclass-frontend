@@ -17,7 +17,7 @@ export default function Content(){
         <div>
             {tutorial.map((tutorialData, i) => {
                     return(
-                        <Card style={{ width: '100%' }} className="contentCard" key={i}>
+                        <Card style={{ width: '80%' }} className="contentCard" key={i}>
                             <Card.Body>
                                 <Card.Title id={tutorialData.name}>{tutorialData.name}</Card.Title>
                                 <Card.Text>{tutorialData.content1}</Card.Text>

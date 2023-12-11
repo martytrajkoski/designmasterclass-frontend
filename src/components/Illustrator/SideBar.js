@@ -16,7 +16,7 @@ export default function SideBar() {
 
     const [name, setName] = useState([])
 
-    axios.get('http://127.0.0.1:8000/api/tutorialphotoshop/')
+    axios.get('http://127.0.0.1:8000/api/tutorialillustrator/')
     .then(res => {
         setName(res.data)
     }).catch(err => {
@@ -24,8 +24,8 @@ export default function SideBar() {
     })
 
     return(
-        <div style={{ display: 'flex', height: '100vh', overflow: 'scroll initial', zIndex: -1}}>
-        <CDBSidebar textColor="#fff" >
+        <div style={{ display: 'flex', overflow: 'scroll initial'}}>
+        <CDBSidebar textColor="#fff" style={{height: '100%'}}>
           <CDBSidebarContent className="sidebar-content" style={{backgroundColor: "#554f7a"}}>
                 <CDBSidebarMenu>
               {name.map((tutorialName, i) => {
@@ -36,17 +36,6 @@ export default function SideBar() {
                 )
               })}
                 </CDBSidebarMenu>
-            {/* <CDBSidebarMenu>
-              <NavLink exact to="/" activeClassName="activeClicked">
-                <CDBSidebarMenuItem icon="user">User Info</CDBSidebarMenuItem>
-              </NavLink>
-              <NavLink exact to="/tables" activeClassName="activeClicked">
-                <CDBSidebarMenuItem icon="credit-card">Subscription</CDBSidebarMenuItem>
-              </NavLink>
-              <NavLink exact to="/profile" activeClassName="activeClicked">
-                <CDBSidebarMenuItem icon="table">Courses</CDBSidebarMenuItem>
-              </NavLink>
-            </CDBSidebarMenu> */}
           </CDBSidebarContent>
         </CDBSidebar>
         <Content/>

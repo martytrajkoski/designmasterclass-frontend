@@ -9,33 +9,42 @@ export default function NaviLeft() {
     const [photoshopName, setPhotoshopName] = useState([])
     const [illustratorName, setIllustratorName] = useState([])
 
-    axios.get('http://127.0.0.1:8000/api/tutorialphotoshop/')
-        .then(res => {
-            setPhotoshopName(res.data)
-        }).catch(err => {
-            console.log(err)
-        })
+    // axios.get('http://127.0.0.1:8000/api/tutorialphotoshop/')
+    //     .then(res => {
+    //         setPhotoshopName(res.data)
+    //     }).catch(err => {
+    //         console.log(err)
+    //     })
 
-    axios.get('http://127.0.0.1:8000/api/tutorialillustrator/')
-    .then(res => {
-        setIllustratorName(res.data)
-    }).catch(err => {
-        console.log(err)
-    })
+    // axios.get('http://127.0.0.1:8000/api/tutorialillustrator/')
+    //     .then(res => {
+    //         setIllustratorName(res.data)
+    //     }).catch(err => {
+    //         console.log(err)
+    //     })
 
     return (
         <div className="Navileft">
-            <DropdownButton title="Turotials">
+            <DropdownButton title="Turotials" style={{ background: 'none' }}>
                 <Dropdown.Header>Adobe Photoshop</Dropdown.Header>
-                <Dropdown.Item href="#/action-1">Getting to know the Photoshop interface</Dropdown.Item>
-                <Dropdown.Item href="#/action-2">Photoshop tools and toolbar overview</Dropdown.Item>
-                <Dropdown.Item href="#/action-3">Reset the tools and Toolbar in Photoshop CC</Dropdown.Item>
+                {photoshopName.map((pName, i) => {
+                    return (
+                        <div key={i}>
+                            <Dropdown.Item href="/photoshop">{pName.name}</Dropdown.Item>
+                        </div>
+                    )
+                })}
                 <Dropdown.Header>Adobe Illustrator</Dropdown.Header>
-                <Dropdown.Item href="#/action-1">Basis</Dropdown.Item>
-                <Dropdown.Item href="#/action-2">Tools</Dropdown.Item>
-                <Dropdown.Item href="#/action-3">Effects</Dropdown.Item>
+                {illustratorName.map((iName, i) => {
+                    return (
+                        <div key={i}>
+                            <Dropdown.Item href="#/action-1">{iName.name}</Dropdown.Item>
+                        </div>
+                    )
+                })}
             </DropdownButton>
-            {/* <Button>Tutorials</Button> */}
+                
+            {/* <Button></Button> */}
             <Button>Quizzes</Button>
         </div>
     );

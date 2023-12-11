@@ -10,6 +10,7 @@ import SignUp from './pages/SignUp';
 import ProfileComponent from './components/Profile/ProfileComponent';
 import SubsctiptionComponent from './components/Profile/SubscriptionComponent'
 import Photoshop from './pages/Photoshop';
+import Illustrator from './pages/Illustrator';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         <Route path="/subscription" element={<SubsctiptionComponent/>}/>
         <Route path="/profile" element={<ProfileComponent/>}/>
         <Route path='/photoshop' element={<Photoshop/>}/>
+        <Route path='/illustrator' element={<Illustrator/>}/>
       </Routes>
     </div>
     

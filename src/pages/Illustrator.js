@@ -7,7 +7,7 @@ export default function Illustrator(){
     return(
         <div>
             <Navibar></Navibar>
-            <div className="illustrator">
+            <div className="content">
                 <SideBar></SideBar>
                 <Content></Content>
             </div>

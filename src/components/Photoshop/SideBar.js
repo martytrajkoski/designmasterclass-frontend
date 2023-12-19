@@ -8,48 +8,48 @@ import {
   CDBSidebarMenuItem,
 } from 'cdbreact';
 import { NavLink } from 'react-router-dom';
-import Content from './Content';
+import { useEffect } from 'react';
 import { useState } from 'react';
 import axios from 'axios';
+import { Button } from 'react-bootstrap';
 
 export default function SideBar() {
 
-    const [name, setName] = useState([])
+    const [data, setData] = useState([]);
 
-    axios.get('http://127.0.0.1:8000/api/tutorialphotoshop/')
-    .then(res => {
-        setName(res.data)
-    }).catch(err => {
-        console.log(err)
-    })
+    useEffect(() => {
+      const fetchData = async () => {
+          try {
+              const response = await axios.get('http://127.0.0.1:8000/api/tutorialphotoshop/');
+              setData(response.data);
+          } catch (error) {
+              console.error('Error fetching data:', error);
+          }
+      };
+
+      fetchData();
+  }, []);
 
     return(
-        <div style={{ display: 'flex', height: '100vh', overflow: 'scroll initial', zIndex: -1}}>
-        <CDBSidebar textColor="#fff" >
-          <CDBSidebarContent className="sidebar-content" style={{backgroundColor: "#554f7a"}}>
-                <CDBSidebarMenu>
-              {name.map((tutorialName, i) => {
-                return (
-                  <NavLink exact to='' activeClassName="activeClicked" key={i}>
-                    <CDBSidebarMenuItem>{tutorialName.name}</CDBSidebarMenuItem>
-                  </NavLink>
-                )
-              })}
-                </CDBSidebarMenu>
-            {/* <CDBSidebarMenu>
-              <NavLink exact to="/" activeClassName="activeClicked">
-                <CDBSidebarMenuItem icon="user">User Info</CDBSidebarMenuItem>
-              </NavLink>
-              <NavLink exact to="/tables" activeClassName="activeClicked">
-                <CDBSidebarMenuItem icon="credit-card">Subscription</CDBSidebarMenuItem>
-              </NavLink>
-              <NavLink exact to="/profile" activeClassName="activeClicked">
-                <CDBSidebarMenuItem icon="table">Courses</CDBSidebarMenuItem>
-              </NavLink>
-            </CDBSidebarMenu> */}
-          </CDBSidebarContent>
-        </CDBSidebar>
-        <Content/>
+      <div className='sideBar'>
+        <div className="sidebar-content" style={{ backgroundColor: '#554f7a' }}>
+          <div className='sidebar-link'>
+            {data.map((tutorialName, i) => {
+              return (
+                <Button 
+                onClick={(e) => {
+                  e.preventDefault();
+                  window.location.href = `#photoshop${i}`;
+                }} 
+                activeClassName="activeClicked" 
+                key={i}
+                >
+                  <CDBSidebarMenuItem>{tutorialName.name}</CDBSidebarMenuItem>
+                </Button>
+              )
+            })}
+          </div>
+        </div>
       </div>
     );
    

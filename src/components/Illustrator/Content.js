@@ -33,6 +33,10 @@ export default function Content(){
                             <Card.Text>{tutorialData.content4}</Card.Text>
                             <Card.Text>{tutorialData.content5}</Card.Text>
                             <img src={tutorialData.image1} width={'500px'} />
+                            <img src={tutorialData.image2} width={'500px'} />
+                            <img src={tutorialData.image3} width={'500px'} />
+                            <img src={tutorialData.image4} width={'500px'} />
+                            <img src={tutorialData.image5} width={'500px'} />
                         </Card.Body>
                     </Card>
                 )

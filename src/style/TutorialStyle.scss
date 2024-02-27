@@ -9,20 +9,15 @@
 }
 
 .sideBar{
-    flex: 1;
-    width: 20%;
-    background-color: '#554f7a';
+    width: 22%;
+    height: 91vh;
+    background-color: '#554f7a'; 
+    background-repeat: repeat;
 }
 .sidebar-content{
     height: 100%;
+    overflow-y: scroll;
     text-align: center;
-    border: 1px solid red;
-    img{
-        width: 100px;
-        position: absolute;
-        bottom: 0;
-        left: 0;
-    }
     
     .btn{
         width: 100%;

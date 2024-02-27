@@ -1,13 +1,4 @@
 import React from 'react';
-import {
-  CDBSidebar,
-  CDBSidebarContent,
-  CDBSidebarFooter,
-  CDBSidebarHeader,
-  CDBSidebarMenu,
-  CDBSidebarMenuItem,
-} from 'cdbreact';
-import { NavLink } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import axios from 'axios';
@@ -44,7 +35,7 @@ export default function SideBar() {
                 activeClassName="activeClicked" 
                 key={i}
                 >
-                  <CDBSidebarMenuItem>{tutorialName.name}</CDBSidebarMenuItem>
+                  {tutorialName.name}
                 </Button>
               )
             })}

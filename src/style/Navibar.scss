@@ -4,20 +4,31 @@
     background-color: #3C327B;
     height: 70px;
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
+    z-index: 8;
 }
 .Navileft{
     display: flex;
     width: 40%;
     .dropdown{
-        margin-left: 10%;
-        font-size: 18px;
+        display: flex;
         z-index: auto;
-        
     }
-    button {
+    .dropdown-menu{
+        background-color: #3C327B;
+        border-radius: 30px;
+        border: 0px;
+        box-shadow: 1px 26px 38px 19px rgba(0,0,0,0.55);
+        -webkit-box-shadow: 1px 26px 38px 19px rgba(0,0,0,0.55);
+        -moz-box-shadow: 1px 26px 38px 19px rgba(0,0,0,0.55);
+    }
+    .dropdown-links{
+        width: 450px;
+        padding: 3%;
+    }
+    button, .btn {
         background: none;
         border: 0px;
-        margin-left: 10%;
+        margin-left: 5%;
         font-size: 18px;
     }
     .btn:hover{

@@ -35,14 +35,9 @@
     background-size: auto 100%;
     margin-top: -1px;
 }
-
 .vector2{
     background-image: url('../media/Homepage/Vector\ 2.png');
     background-size: auto 100%;
-}
-
-.homeIllustrator{
-    background-color: #FFAF6C;
 }
 
 .homeCard{
@@ -59,15 +54,40 @@
         font-family: 'Oxygen', sans-serif;
         font-size: 18px;
     }
-    button{
-        color: black;
-        border: 1px solid #3C327B;
-        border-radius: 36px;
-        font-size: 18px;
-        font-family: 'Oxygen', sans-serif;
-        box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.3);
-    }
     img{
         box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.3);
+    }
+}
+.homePhotoshop{
+    .btn {
+        background-color: #FC9C4B;
+        color: black;
+        border: 1px solid #fc9c4b;
+        border-radius: 30px;
+        width: 35%;
+        margin: auto;
+        box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.3);
+        &:hover{
+            border: 1px solid #b97136;
+            background-color: #b97136;
+            color: white;
+        }
+    }
+}
+.homeIllustrator{
+    background-color: #FFAF6C;
+    .btn {
+        background-color: #6D659C;
+        color: black;
+        border: 1px solid #6D659C;
+        border-radius: 30px;
+        width: 35%;
+        margin: auto;
+        box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.3);
+        &:hover{
+            border: 1px solid #5a5287;
+            background-color: #5a5287;
+            color: white;
+        }
     }
 }

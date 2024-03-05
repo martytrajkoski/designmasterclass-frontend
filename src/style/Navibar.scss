@@ -23,14 +23,14 @@
     }
     .dropdown-links{
         width: 450px;
-        padding: 3%;
+        padding: 2%;
     }
     button, .btn {
         background: none;
         border: 0px;
         margin-left: 5%;
         font-size: 18px;
-    }
+        }
     .btn:hover{
         background-color: #c77634;
     }
@@ -51,5 +51,8 @@
     }
     .btn:hover{
         background-color: #c77634;
+    }
+    .btn:disabled{
+        background: none;
     }
 }

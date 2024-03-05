@@ -1,4 +1,3 @@
-import { Container, Row } from 'react-bootstrap';
 import '../src/style/AppStyle.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
 // import Index from "./pages/Index";
@@ -10,6 +9,8 @@ import SignUp from './pages/SignUp';
 import SubsctiptionComponent from './components/Profile/SubscriptionComponent'
 import Photoshop from './pages/Photoshop';
 import Illustrator from './pages/Illustrator';
+import Courses from './pages/Courses';
+import Quizzes from './pages/Quizzes';
 
 function App() {
   return (
@@ -23,6 +24,8 @@ function App() {
         <Route path="/subscription" element={<SubsctiptionComponent/>}/>
         <Route path='/photoshop' element={<Photoshop/>}/>
         <Route path='/illustrator' element={<Illustrator/>}/>
+        <Route path='/courses' element={<Courses/>}/>
+        <Route path='/quizzes' element={<Quizzes/>}/>
       </Routes>
     </div>
     

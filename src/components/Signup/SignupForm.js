@@ -39,32 +39,7 @@ export default function SignupForm(){
             console.log('Cannot sign up')
         }
     }
-
-    // function submitLogin(e) {
-    //     e.preventDefault();
-    //     axiosClient.post(
-    //         "/api/userlogin/",
-    //         {
-    //             email: email,
-    //             password: password
-    //         }.then(function(res){
-    //             setCurrentUser(true);
-    //         })
-    //     ).then(function(res){
-    //         setCurrentUser(false);
-    //     });
-    // }
-
-    // function submitLogout(e) {
-    //     e.preventDefault();
-    //     axiosClient.post(
-    //         "/api/userlogout/",
-    //         {withCredentials: true}
-    //     ).then(function(res){
-    //         setCurrentUser(false);
-    //     });
-    // }
-
+    
     return(
         <Form className="signupForm" onSubmit={e => submitRegistration(e)}>
             <Form.Group className="mb-3" controlId="formBasicEmail">

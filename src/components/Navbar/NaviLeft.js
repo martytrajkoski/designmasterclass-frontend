@@ -2,9 +2,15 @@ import { Button, Dropdown, DropdownButton} from "react-bootstrap";
 import '../../style/Navibar.scss';
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { Link } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 export default function NaviLeft() {
+    const navigate = useNavigate();
+
+    const navigateQuizzes = () => {
+        navigate('/quizzes')
+    }
+
     const [photoshopTutorial, setPhotoshopTutorial] = useState([]);
     const [illustratorTutorial, setIllustratorTutorial] = useState([]);
     const [loadingPhotoshop, setLoadingPhotoshop] = useState(true);
@@ -76,7 +82,7 @@ export default function NaviLeft() {
                 </div>
             </DropdownButton>
                 
-            <Button>Quizzes</Button>
+            <Button onClick={navigateQuizzes}>Quizzes</Button>
         </div>
     );
 };

@@ -19,7 +19,6 @@ export default function ProfileComponent() {
         <Container>
             <Form className="subscriptionForm">
                 <Form.Group controlId="formBasicEmail">
-                    {/* <Form.Label  className="subscriptionInfo">Cardholder name</Form.Label> */}
                     <Form.Control className="subscriptionInfo" placeholder="Card Number" />
                     <Form.Control className="subscriptionInfo" placeholder="Expiration date" />
                     <Form.Control className="subscriptionInfo" placeholder="CVC" />

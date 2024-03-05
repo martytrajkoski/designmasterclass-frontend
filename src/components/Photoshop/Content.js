@@ -21,7 +21,7 @@ export default function Content(){
     }, []);
 
     return (
-        <div style={{ width: '100%' }}>
+        <div style={{ width: '100%', height: '91vh', overflowY: 'scroll'}}>
             {data.map((tutorialData, i) => {
                 return (
                     <Card className="contentCard" key={i}>
@@ -47,29 +47,10 @@ export default function Content(){
                     e.preventDefault();
                     window.location.href = `#photoshop0`;
                     }}
-                    height={'80px'} 
+                    height={'60px'} 
                     />
             </div>
             
         </div>
     );
 }
-    // return(
-    //     <div>
-    //         {tutorial.map((tutorialData, i) => {
-    //                 return(
-    //                     <Card style={{ width: '80%' }} className="contentCard" key={i}>
-    //                         <Card.Body>
-    //                             <Card.Title id={tutorialData.name}>{tutorialData.name}</Card.Title>
-    //                             <Card.Text>{tutorialData.content1}</Card.Text>
-    //                             <Card.Text>{tutorialData.content2}</Card.Text>
-    //                             <Card.Text>{tutorialData.content3}</Card.Text>
-    //                             <Card.Text>{tutorialData.content4}</Card.Text>
-    //                             <Card.Text>{tutorialData.content5}</Card.Text>
-    //                             {tutorialData.image1}
-    //                         </Card.Body>
-    //                     </Card>
-    //                 )
-    //             })} 
-    //     </div>
-    // );

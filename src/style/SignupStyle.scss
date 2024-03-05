@@ -5,7 +5,7 @@
     img{
         width: 18%;
         margin-left: 5%;
-        margin-bottom: 5%;
+        margin-bottom: 1%;
     }
     .btn{
         background: none;
@@ -20,10 +20,15 @@
 }
 .signupCard{
     margin: auto;
-    width: 40%;
+    width: 55%;
     background-color: #3C327B;
     border-radius: 30px;
-    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.3);
+    box-shadow: 1px 26px 44px 3px rgba(0,0,0,0.30);
+    -webkit-box-shadow: 1px 26px 44px 3px rgba(0,0,0,0.30);
+    -moz-box-shadow: 1px 26px 44px 3px rgba(0,0,0,0.30);
+    p{
+        margin: 0px;
+    }
     .cardTitle{
         font-size: 35px;
         font-weight: 600;
@@ -35,7 +40,7 @@
         width: 70%;
         margin: auto;
         padding: 2%;
-        height: 350px;
+        height: 500px;
         input{
             text-align: center;
             width: 100%;

@@ -11,6 +11,7 @@ export default function Content(){
         const fetchData = async () => {
             try {
                 const response = await axios.get('http://127.0.0.1:8000/api/tutorialillustrator/');
+                console.log(response.data)
                 setData(response.data);
             } catch (error) {
                 console.error('Error fetching data:', error);
@@ -21,7 +22,7 @@ export default function Content(){
     }, []);
     
     return (
-        <div style={{ width: '100%' }}>
+        <div style={{ width: '100%', height: '91vh', overflowY: 'scroll' }}>
             {data.map((tutorialData, i) => {
                 return (
                     <Card className="contentCard" key={i}>
@@ -47,7 +48,7 @@ export default function Content(){
                     e.preventDefault();
                     window.location.href = `#illustrator1`;
                     }}
-                    height={'80px'} 
+                    height={'60px'} 
                     />
             </div>
             

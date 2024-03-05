@@ -1,51 +1,88 @@
 import { Button, Dropdown, DropdownButton} from "react-bootstrap";
 import '../../style/Navibar.scss';
 import axios from "axios";
-import { useState } from "react";
-
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function NaviLeft() {
+    const navigate = useNavigate();
 
-    const [photoshopName, setPhotoshopName] = useState([])
-    const [illustratorName, setIllustratorName] = useState([])
+    const navigateQuizzes = () => {
+        navigate('/quizzes')
+    }
 
-    // axios.get('http://127.0.0.1:8000/api/tutorialphotoshop/')
-    //     .then(res => {
-    //         setPhotoshopName(res.data)
-    //     }).catch(err => {
-    //         console.log(err)
-    //     })
+    const [photoshopTutorial, setPhotoshopTutorial] = useState([]);
+    const [illustratorTutorial, setIllustratorTutorial] = useState([]);
+    const [loadingPhotoshop, setLoadingPhotoshop] = useState(true);
+    const [loadingIllustrator, setLoadingIllustrator] = useState(true);
 
-    // axios.get('http://127.0.0.1:8000/api/tutorialillustrator/')
-    //     .then(res => {
-    //         setIllustratorName(res.data)
-    //     }).catch(err => {
-    //         console.log(err)
-    //     })
+    useEffect(() => {
+        const fetchPhotoshopTutorial = async () => {
+            try {
+                const response = await axios.get('http://127.0.0.1:8000/api/tutorialphotoshop/');
+                setPhotoshopTutorial(response.data);
+            } catch (error) {
+                console.error('Error fetching Photoshop tutorials:', error);
+            } finally {
+                setLoadingPhotoshop(false);
+            }
+        };
+
+        const fetchIllustratorTutorial = async () => {
+            try {
+                const response = await axios.get('http://127.0.0.1:8000/api/tutorialillustrator/');
+                setIllustratorTutorial(response.data);
+            } catch (error) {
+                console.error('Error fetching Illustrator tutorials:', error);
+            } finally {
+                setLoadingIllustrator(false);
+            }
+        };
+
+        fetchPhotoshopTutorial();
+        fetchIllustratorTutorial();
+    }, []);
 
     return (
         <div className="Navileft">
-            <DropdownButton title="Turotials" style={{ background: 'none' }}>
-                <Dropdown.Header>Adobe Photoshop</Dropdown.Header>
-                {photoshopName.map((pName, i) => {
-                    return (
-                        <div key={i}>
-                            <Dropdown.Item href="/photoshop">{pName.name}</Dropdown.Item>
-                        </div>
-                    )
-                })}
-                <Dropdown.Header>Adobe Illustrator</Dropdown.Header>
-                {illustratorName.map((iName, i) => {
-                    return (
-                        <div key={i}>
-                            <Dropdown.Item href="#/action-1">{iName.name}</Dropdown.Item>
-                        </div>
-                    )
-                })}
+            <DropdownButton title="Tutorials" style={{ background: 'none', display: 'flex', marginLeft: '5%' }}>   
+                <div className="dropdown">
+                    <div className="dropdown-links">
+                        <Dropdown.Header style={{color: '#c77634', fontSize: '25px', fontWeight: '500'}}>Adobe Photoshop</Dropdown.Header>
+                        {loadingPhotoshop ? (
+                            <span>Loading Photoshop tutorials...</span>
+                        ) : (
+                            photoshopTutorial.map((pName, i) => (
+                                <div key={i}>
+                                    <Button
+                                        onClick={() => {
+                                            window.location.href = `/photoshop#photoshop${i}`;
+                                        }}
+                                    >{pName.name}</Button>
+                                </div>
+                            ))
+                        )}
+                    </div>
+                    <div className="dropdown-links">
+                        <Dropdown.Header style={{color: '#c77634', fontSize: '25px', fontWeight: '500'}}>Adobe Illustrator</Dropdown.Header>
+                        {loadingIllustrator ? (
+                            <span>Loading Illustrator tutorials...</span>
+                        ) : (
+                            illustratorTutorial.map((iName, i) => (
+                                <div key={i}>
+                                    <Button 
+                                        onClick={() => {
+                                            window.location.href = `/illustrator#illustrator${i}`;
+                                        }}
+                                    >{iName.name}</Button>
+                                </div>
+                            ))
+                        )}
+                    </div> 
+                </div>
             </DropdownButton>
                 
-            {/* <Button></Button> */}
-            <Button>Quizzes</Button>
+            <Button onClick={navigateQuizzes}>Quizzes</Button>
         </div>
     );
 };

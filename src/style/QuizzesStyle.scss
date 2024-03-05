@@ -1,0 +1,100 @@
+.quizzes{
+    background-color: #C4C4C4;
+}
+
+.quizzesSearch{
+    margin: 0% 10% 40px 10%;
+}
+.searchBar{
+    text-align: center;
+    align-items: center;
+    font-family: 'Patrick Hand SC';
+    font-size: 40px;
+    height: 100px;
+    padding: 50px;
+    input{
+        height: 45px;
+        width: 450px;
+        padding-left: 30px;
+        border: 1px solid #3C327B;
+        border-radius: 36px 0 0 36px;
+        font-size: 25px;
+    }
+    button{
+        height: 45px;
+        width: 70px;
+        border: 1px solid #3C327B;
+        border-radius: 0 36px 36px 0;
+        background-color: #FC9C4B;
+    }
+}
+.searchButtons{
+    margin-top: 40px;
+    p{
+        font-family: 'verdana';
+        font-weight: 500;
+        font-size: 40px;
+        color: #3C327B;
+        margin-left: 15px;
+    }
+    .buttons{
+        margin-top: 40px;
+    }
+    .btn{
+        background-color: #FC9C4B;
+        color: black;
+        border: 1px solid #fc9c4b;
+        border-radius: 30px;
+        width: 150px;
+        margin: 0px 15px 0px 15px;
+        box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.3);
+        &:hover{
+            border: 1px solid #b97136;
+            background-color: #b97136;
+            color: white;
+        }
+    }
+}
+
+.quizzesPanel{
+    margin: 0% 10% 40px 10%;
+    background-color: white;
+    border-radius: 36px;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 1%;    
+}
+
+.quizCard{
+    max-width: 31%;
+    margin: 1%;
+    border: 1px solid #ccc;
+    border-radius: 36px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    .thumbnail{
+        img{
+            width: 100%;
+            border-radius: 12px;
+        }
+    }
+    .cardButtons{
+        display: 'flex';
+        .btn{
+            margin-right: 5%;
+            background-color: #FC9C4B;
+            color: black;
+            border: 1px solid #fc9c4b;
+            border-radius: 30px;
+            box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.3);
+            &:hover {
+                border: 1px solid #b97136;
+                background-color: #b97136;
+                color: white;
+            }
+        }
+        img{
+            width: 40px;
+        }
+    }
+}

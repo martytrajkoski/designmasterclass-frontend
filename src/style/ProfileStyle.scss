@@ -54,25 +54,14 @@
   color: white;
 }
 
-// .sideBar{
-//   width: 22%;
-//   background-color: '#554f7a'; 
-// }
-// .sidebar-content{
-//   height: 100%;
-//   text-align: center;
-//   background-color: '#554f7a';
-//   // overflow-y: hidden;
-//   .btn{
-//       width: 100%;
-//       background: none;
-//       border: 0;
-//   }
-//   .btn:hover{
-//       background-color: white;
-//       color: black;
-//   }
-// }
-// .sidebar-link{
-//   margin-top: 10%;
-// }
+.saved{
+  background-color: #C4C4C4;
+  .type {
+      font-family: 'verdana';
+      font-weight: 500;
+      font-size: 30px;
+      color: #3C327B;
+      margin-left: 10%;
+
+    }
+}

@@ -41,7 +41,6 @@
         margin-top: 40px;
     }
     .btn{
-        background-color: #FC9C4B;
         color: black;
         border: 1px solid #fc9c4b;
         border-radius: 30px;
@@ -53,6 +52,13 @@
             background-color: #b97136;
             color: white;
         }
+        
+    }
+    .active{
+        background-color: #FC9C4B;;
+    }
+    .default{
+            background-color: #b97136;
     }
 }
 

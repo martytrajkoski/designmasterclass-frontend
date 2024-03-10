@@ -24,6 +24,7 @@ export default function ProfileComponent(){
     fetchCurrentUser();
   }, []);
 
+  console.log(userData)
     return(
         <Container>
             <Card className="profileCard">
@@ -33,6 +34,7 @@ export default function ProfileComponent(){
                     <Card.Text className="profileInfo">Username: {userData ? userData.username : 'Loading...'} </Card.Text>
                     <Card.Text className="profileInfo">Email: {userData ? userData.email : 'Loading...'} </Card.Text>
                     <Card.Text className="profileInfo">Payment: {userData ? userData.payment : 'Loading...'}</Card.Text>
+                    {/* {userData.courses} */}
                 </Card.Body>
             </Card>
         </Container> 

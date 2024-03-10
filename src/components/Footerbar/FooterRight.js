@@ -37,6 +37,18 @@ export default function FooterRight(){
     const navigateProfile = () => {
         navigate('/profile')
     }
+    const navigateLogin = () => {
+        navigate('/login')
+    }
+    const handleLogout = async () => {
+        try{
+            await axiosClient.post("api/userlogout/");
+            localStorage.removeItem('token');
+            window.location.reload();
+        } catch (error) {
+            console.error('Error logging out: ', error);
+        }
+    }
 
     return(
         <div className="footerRight">
@@ -44,9 +56,13 @@ export default function FooterRight(){
             <Button onClick={navigateQuizzes}>Quizzes</Button>
             <Button onClick={navigateCourses}>Paid Courses</Button>
             <Button 
-            onClick={navigateProfile}
-            disabled={isButtonDisabled}>Profile</Button>
-            <Button>Log In</Button>
+                onClick={navigateProfile}
+                disabled={isButtonDisabled}>Profile</Button>
+            {localStorage.getItem('token') ? (
+                <Button onClick={handleLogout}>Log Out</Button>
+            ) : (
+                <Button onClick={navigateLogin}>Log In</Button>
+            )}
         </div>
     );
 }

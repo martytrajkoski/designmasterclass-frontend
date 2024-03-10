@@ -5,7 +5,7 @@
 .quizzesSearch{
     margin: 0% 10% 40px 10%;
 }
-.searchBar{
+.quizSearchBar{
     text-align: center;
     align-items: center;
     font-family: 'Patrick Hand SC';
@@ -28,7 +28,7 @@
         background-color: #FC9C4B;
     }
 }
-.searchButtons{
+.quizSearchButtons{
     margin-top: 40px;
     p{
         font-family: 'verdana';
@@ -54,6 +54,12 @@
             color: white;
         }
     }
+    .active{
+        background-color: #FC9C4B;
+    }
+    .default{
+            background-color: #b97136;
+    }
 }
 
 .quizzesPanel{
@@ -78,7 +84,7 @@
             border-radius: 12px;
         }
     }
-    .cardButtons{
+    .quizcardButtons{
         display: 'flex';
         .btn{
             margin-right: 5%;

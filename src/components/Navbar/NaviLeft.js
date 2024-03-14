@@ -2,14 +2,18 @@ import { Button, Dropdown, DropdownButton} from "react-bootstrap";
 import '../../style/Navibar.scss';
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
+
 
 export default function NaviLeft() {
     const navigate = useNavigate();
+    const location = useLocation();
 
     const navigateQuizzes = () => {
         navigate('/quizzes')
     }
+
+    const isActive = location.pathname.includes("courses") || location.pathname.includes("quizzes") || location.pathname.includes("profile");
 
     const [photoshopTutorial, setPhotoshopTutorial] = useState([]);
     const [illustratorTutorial, setIllustratorTutorial] = useState([]);
@@ -83,6 +87,11 @@ export default function NaviLeft() {
             </DropdownButton>
                 
             <Button onClick={navigateQuizzes}>Quizzes</Button>
+            {isActive && (
+                <Button href="/">
+                    <img src={require('../../media/Navbar/home wihte 1.png')} alt="Home"/>
+                </Button>
+            )}
         </div>
     );
 };

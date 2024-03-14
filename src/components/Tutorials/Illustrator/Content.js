@@ -22,7 +22,7 @@ export default function Content(){
     }, []);
     
     return (
-        <div style={{ width: '100%', height: '91vh', overflowY: 'scroll' }}>
+        <div style={{overflowY: 'scroll'}}>
             {data.map((tutorialData, i) => {
                 return (
                     <Card className="contentCard" key={i}>
@@ -33,17 +33,17 @@ export default function Content(){
                             <Card.Text>{tutorialData.content3}</Card.Text>
                             <Card.Text>{tutorialData.content4}</Card.Text>
                             <Card.Text>{tutorialData.content5}</Card.Text>
-                            <img src={tutorialData.image1} width={'500px'} />
-                            <img src={tutorialData.image2} width={'500px'} />
-                            <img src={tutorialData.image3} width={'500px'} />
-                            <img src={tutorialData.image4} width={'500px'} />
-                            <img src={tutorialData.image5} width={'500px'} />
+                            <img src={tutorialData.image1} />
+                            <img src={tutorialData.image2} />
+                            <img src={tutorialData.image3} />
+                            <img src={tutorialData.image4} />
+                            <img src={tutorialData.image5} />
                         </Card.Body>
                     </Card>
                 )
             })}
             <div style={{textAlign: "center"}}>
-                <img src={require('../../media/Icons/up-arrow.png')} 
+                <img src={require('../../../media/Icons/up-arrow.png')} 
                     onClick={(e) => {
                     e.preventDefault();
                     window.location.href = `#illustrator1`;

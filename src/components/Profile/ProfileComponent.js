@@ -1,5 +1,4 @@
 import { Container, Card, Button } from "react-bootstrap";
-import '../../style/ProfileStyle.scss'
 import { useState, useEffect } from 'react';
 import axiosClient from '../../api/axiosClient';
 
@@ -34,7 +33,6 @@ export default function ProfileComponent(){
                     <Card.Text className="profileInfo">Username: {userData ? userData.username : 'Loading...'} </Card.Text>
                     <Card.Text className="profileInfo">Email: {userData ? userData.email : 'Loading...'} </Card.Text>
                     <Card.Text className="profileInfo">Payment: {userData ? userData.payment : 'Loading...'}</Card.Text>
-                    {/* {userData.courses} */}
                 </Card.Body>
             </Card>
         </Container> 

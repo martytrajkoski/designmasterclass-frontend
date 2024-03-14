@@ -1,13 +1,13 @@
 .content{
   display: flex;
   height: 100vh;
-  background-color: #C4C4C4;
+  background-color: #a569383a;
 }
 
 .profileCard{
   margin: 5%;
   padding: 0% 15%;
-  background-color: #C4C4C4;
+  // background-color: #a569383a;
   border: none;
 }
 
@@ -24,7 +24,6 @@
   margin: 5%;
   padding: 0% 15%;
   align-items: center;
-  background-color: #C4C4C4;
   border: none;
   .btn {
     border-radius: 36px;
@@ -55,7 +54,7 @@
 }
 
 .saved{
-  background-color: #C4C4C4;
+  background-color: #a569383a;
   .type {
       font-family: 'verdana';
       font-weight: 500;

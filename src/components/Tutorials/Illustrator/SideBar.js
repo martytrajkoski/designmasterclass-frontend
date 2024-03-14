@@ -22,7 +22,7 @@ export default function SideBar() {
   }, []);
 
     return(
-      <div className='sideBar'>
+      <div className='sideBar' style={{width: '150%'}}>
         <div className="sidebar-content" style={{ backgroundColor: '#554f7a' }}>
           <div className='sidebar-link'>
             {data.map((tutorialName, i) => {

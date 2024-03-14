@@ -1,12 +1,14 @@
-import SideBar from "../components/Illustrator/SideBar";
+import SideBar from "../components/Tutorials/Illustrator/SideBar";
 import Navibar from "../components/Navbar/Navibar";
-import Content from "../components/Illustrator/Content";
+import Content from "../components/Tutorials/Illustrator/Content";
 import "../style/TutorialStyle.scss"
+import TutorialNavi from "../components/Tutorials/TutorialNavi";
 
 export default function Illustrator(){
     return(
-        <div>
-            <Navibar></Navibar>
+        <div className="tutorialContent">
+            <Navibar />
+            <TutorialNavi />
             <div className="content">
                 <SideBar></SideBar>
                 <Content></Content>

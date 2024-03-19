@@ -2,6 +2,7 @@ import { Button } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import "../../style/QuizzesStyle.scss"
 import axiosClient from "../../api/axiosClient";
+import { API_URL } from "../../config/apiUrl"
 
 export default function QuizCard({ selectedCategory}){
     const [data, setData] = useState([]);
@@ -13,7 +14,7 @@ export default function QuizCard({ selectedCategory}){
       const fetchData = async () => {
         try {
           const response = await axiosClient.get(
-            "http://127.0.0.1:8000/api/quizzes/"
+            `${API_URL}/api/quizzes/`
           );
           setData(response.data);
         } catch (error) {
@@ -52,11 +53,9 @@ export default function QuizCard({ selectedCategory}){
           const userQuizzes = response.data.quizzes;
           const savedQuizIds = userQuizzes.map(quiz => quiz.id);
           
-          // Initialize isCourseAddedArray with false values for each card
           const newIsQuizAddedArray = data.map(quiz => savedQuizIds.includes(quiz.id));
           setIsQuizAddedArray(newIsQuizAddedArray);
           
-          // Update local storage
           localStorage.setItem("savedQuizzes", JSON.stringify(newIsQuizAddedArray));
         } catch (error) {
           console.error("Error fetching user quizzes:", error);
@@ -88,12 +87,10 @@ export default function QuizCard({ selectedCategory}){
         });
         console.log("Quiz added to user:", response.data);
         
-        // Update the state for the specific card
         const updatedArray = [...isQuizAddedArray];
         updatedArray[index] = true;
         setIsQuizAddedArray(updatedArray);
         
-        // Update local storage
         localStorage.setItem("savedQuizzes", JSON.stringify(updatedArray));
       } catch (error) {
         console.error("Error adding quiz to user:", error);
@@ -108,12 +105,10 @@ export default function QuizCard({ selectedCategory}){
         });
         console.log("Quiz removed from user:", response.data);
         
-        // Update the state for the specific card
         const updatedArray = [...isQuizAddedArray];
         updatedArray[index] = false;
         setIsQuizAddedArray(updatedArray);
         
-        // Update local storage
         localStorage.setItem("savedQuizzes", JSON.stringify(updatedArray));
       } catch (error) {
         console.error("Error removing quiz from user:", error);

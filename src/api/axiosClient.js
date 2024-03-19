@@ -13,7 +13,7 @@ const axiosClient  = axios.create({
 
 axiosClient.interceptors.request.use(
     config => {
-      const token = localStorage.getItem('token'); // Assuming you're storing token in localStorage
+      const token = localStorage.getItem('token'); //storing token in localStorage
       if (token) {
         config.headers.Authorization = `Token ${token}`;
       }

@@ -1,18 +1,21 @@
 import React, { useEffect, useState } from "react";
 import axiosClient from "../../api/axiosClient";
 import { Button } from "react-bootstrap";
+import { API_URL } from "../../config/apiUrl"
+
 
 export default function CourseCard({ selectedCategory }) {
   const [data, setData] = useState([]);
   const [userData, setUserData] = useState(null);
   const [filteredData, setFilteredData] = useState([]);
   const [isCourseAddedArray, setIsCourseAddedArray] = useState([]);
+  const [saveButton, setSaveButton] = useState(false)
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axiosClient.get(
-          "http://127.0.0.1:8000/api/courses/"
+          `${API_URL}/api/courses/`
         );
         setData(response.data);
       } catch (error) {
@@ -32,8 +35,9 @@ export default function CourseCard({ selectedCategory }) {
           },
         });
         setUserData(response.data.user);
+        setSaveButton(true);
       } catch (error) {
-        console.error("Error fetching user data");
+        console.error("Error fetching user data"); 
       }
     };
 
@@ -113,6 +117,31 @@ export default function CourseCard({ selectedCategory }) {
     }
   };
 
+  const handleCheckout = async (courseId) => {
+    try {
+      const response = await fetch(`${API_URL}/api/create_checkout_session`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ course_id: courseId }),
+      });
+  
+      if (response.ok) {
+        const data = await response.json();
+        window.location.href = data; // Redirect to the checkout URL returned by the backend
+      } else {
+        console.error("Failed to initiate checkout");
+        alert("Failed to initiate checkout. Please try again later.");
+      }
+    } catch (error) {
+      console.error("Error initiating checkout:", error);
+      alert("Error initiating checkout. Please try again later.");
+    }
+  };  
+
+  console.log(filteredData)
+
   return (
     <div className="coursesPanel">
       {filteredData.map((courseData, i) => {
@@ -131,9 +160,10 @@ export default function CourseCard({ selectedCategory }) {
               <div style={{ width: "60%" }}>
                 <span>{courseData.artist}</span>
               </div>
-              <div style={{ width: "40%" }}>
-                <Button href={courseData.url}>Watch</Button>
-                <img 
+              <div style={{ width: "40%", float: 'right'}}>
+                <Button onClick={() => handleCheckout(courseData.id)}>Watch</Button>
+                {saveButton ? (
+                  <img 
                   src={isCourseAddedArray[i] ? require("../../media/Icons/Saved.png") : require("../../media/Icons/notSaved.png")} 
                   alt={isCourseAddedArray[i] ? "Saved" : "Not Saved"} 
                   onClick={() => {
@@ -145,6 +175,12 @@ export default function CourseCard({ selectedCategory }) {
                   }} 
                   style={{ cursor: "pointer" }} 
                 />
+                ) : (
+                  null
+                )
+
+                }
+                
               </div>
             </div>
           </div>

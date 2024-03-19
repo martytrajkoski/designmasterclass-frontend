@@ -11,6 +11,7 @@ import Photoshop from './pages/Photoshop';
 import Illustrator from './pages/Illustrator';
 import Courses from './pages/Courses';
 import Quizzes from './pages/Quizzes';
+import Payment from './pages/Payment';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
         <Route path='/illustrator' element={<Illustrator/>}/>
         <Route path='/courses' element={<Courses/>}/>
         <Route path='/quizzes' element={<Quizzes/>}/>
+        <Route path='/payment' element={<Payment/>}/>
       </Routes>
     </div>
     

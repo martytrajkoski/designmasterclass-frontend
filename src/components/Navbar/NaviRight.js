@@ -12,7 +12,7 @@ export default function NaviRight() {
         try{
             await axiosClient.post("api/userlogout/");
             localStorage.removeItem('token');
-            window.location.reload();
+            navigate('/');
         } catch (error) {
             console.error('Error logging out: ', error);
         }

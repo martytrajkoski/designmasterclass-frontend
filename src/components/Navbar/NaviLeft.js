@@ -1,6 +1,7 @@
 import { Button, Dropdown, DropdownButton} from "react-bootstrap";
 import '../../style/Navibar.scss';
 import axios from "axios";
+import { API_URL } from "../../config/apiUrl"
 import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 
@@ -23,7 +24,7 @@ export default function NaviLeft() {
     useEffect(() => {
         const fetchPhotoshopTutorial = async () => {
             try {
-                const response = await axios.get('http://127.0.0.1:8000/api/tutorialphotoshop/');
+                const response = await axios.get(`${API_URL}/api/tutorialphotoshop/`);
                 setPhotoshopTutorial(response.data);
             } catch (error) {
                 console.error('Error fetching Photoshop tutorials:', error);
@@ -34,7 +35,7 @@ export default function NaviLeft() {
 
         const fetchIllustratorTutorial = async () => {
             try {
-                const response = await axios.get('http://127.0.0.1:8000/api/tutorialillustrator/');
+                const response = await axios.get(`${API_URL}/api/tutorialillustrator/`);
                 setIllustratorTutorial(response.data);
             } catch (error) {
                 console.error('Error fetching Illustrator tutorials:', error);

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Button } from 'react-bootstrap';
 import axiosClient from '../../api/axiosClient';
+import { API_URL } from "../../config/apiUrl"
 
 export default function ProfileCourses() {
   const [loadingCourses, setLoadingCourses] = useState(true);
@@ -11,7 +12,7 @@ export default function ProfileCourses() {
   useEffect(() => {
       const fetchCourses = async () => {
           try {
-              const response = await axiosClient.get('http://127.0.0.1:8000/api/courses/');
+              const response = await axiosClient.get(`${API_URL}/api/courses/`);
               setCourses(response.data);
           } catch (error) {
               console.error('Error fetching courses:', error);
@@ -118,6 +119,7 @@ export default function ProfileCourses() {
                                   <img src={courseData.thumbnail} alt="slika" />
                               </div>
                               <div className="courseDescription">
+                                  <span>${courseData.price}</span>
                                   <span style={{ float: 'right', marginRight: '1%', fontFamily: 'inherit' }}>{courseData.length}</span>
                                   <br />
                                   <p style={{ width: '100%', fontWeight: 'bold' }}>{courseData.name}</p>

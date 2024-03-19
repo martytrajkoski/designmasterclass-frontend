@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import axios from "axios";
 import { Button, Card} from "react-bootstrap";
 import { useEffect } from 'react';
+import { API_URL } from "../../../config/apiUrl"
+
 
 export default function Content(){
 
@@ -10,7 +12,7 @@ export default function Content(){
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get('http://127.0.0.1:8000/api/tutorialillustrator/');
+                const response = await axios.get(`${API_URL}/api/tutorialillustrator/`);
                 console.log(response.data)
                 setData(response.data);
             } catch (error) {

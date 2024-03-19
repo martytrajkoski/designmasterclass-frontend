@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Button } from 'react-bootstrap';
 import axiosClient from '../../api/axiosClient';
+import { API_URL } from "../../config/apiUrl"
 
 export default function ProfileQuizzes() {
   const [loadingQuizzes, setLoadingQuizzes] = useState(true);
@@ -11,7 +12,7 @@ export default function ProfileQuizzes() {
   useEffect(() => {
       const fetchQuizzes = async () => {
           try {
-              const response = await axiosClient.get('http://127.0.0.1:8000/api/quizzes/');
+              const response = await axiosClient.get(`${API_URL}/api/quizzes/`);
               setQuizzes(response.data);
           } catch (error) {
               console.error('Error fetching quizzes:', error);

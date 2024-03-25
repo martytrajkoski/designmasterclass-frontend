@@ -7,11 +7,13 @@ import "../style/CoursesStyle.scss"
 
 export default function Courses() {
     const [selectedCategory, setSelectedCategory] = useState(null);
+    const [searchQuery, setSearchQuery] = useState("");
+
     return (
         <div className="courses">
             <Navibar />
-            <CoursesSearch setSelectedCategory={setSelectedCategory} />
-            <CourseCard selectedCategory={selectedCategory} />
+            <CoursesSearch setSelectedCategory={setSelectedCategory} setSearchQuery={setSearchQuery} />
+            <CourseCard selectedCategory={selectedCategory} searchQuery={searchQuery} />
             <Footerbar />
         </div>
     );

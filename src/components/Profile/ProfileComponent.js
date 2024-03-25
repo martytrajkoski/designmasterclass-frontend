@@ -26,15 +26,15 @@ export default function ProfileComponent(){
   console.log(userData)
     return(
         <Container>
-            <Card className="profileCard">
-                <Card.Body style={{padding: '0px'}}>
+            {/* <Card className="profileCard"> */}
+                <Card.Body className="profileCard">
                     <Card.Text className="profileInfo">First Name:  {userData ? userData.firstName : 'Loading...'}</Card.Text>    
                     <Card.Text className="profileInfo">Last Name: {userData ? userData.lastName : 'Loading...'}</Card.Text>
                     <Card.Text className="profileInfo">Username: {userData ? userData.username : 'Loading...'} </Card.Text>
                     <Card.Text className="profileInfo">Email: {userData ? userData.email : 'Loading...'} </Card.Text>
                     <Card.Text className="profileInfo">Payment: {userData ? userData.payment : 'Loading...'}</Card.Text>
                 </Card.Body>
-            </Card>
+            {/* </Card> */}
         </Container> 
     );
 }

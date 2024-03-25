@@ -1,18 +1,26 @@
 import { Button } from "react-bootstrap";
 import '../../style/Navibar.scss';
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import axiosClient from "../../api/axiosClient";
 import { useState, useEffect } from "react";
 
 export default function NaviRight() {
 
     const navigate = useNavigate();
+    const location = useLocation()
+
+    const currentURL = location.pathname;
+    console.log(currentURL)
 
     const handleLogout = async () => {
         try{
             await axiosClient.post("api/userlogout/");
             localStorage.removeItem('token');
-            navigate('/');
+            if(currentURL == '/profile'){
+                navigate('/')
+            }else{
+                window.location.reload();
+            }
         } catch (error) {
             console.error('Error logging out: ', error);
         }

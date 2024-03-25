@@ -12,15 +12,15 @@ export default function SignupForm(){
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
-    useEffect(() => {
-        axiosClient.get("/api/userview/")
-        .then(function(res){
-            setCurrentUser(true);
-        })
-        .catch(function(error){
-            setCurrentUser(false);
-        });
-    }, []);
+    // useEffect(() => {
+    //     axiosClient.get("/api/userview/")
+    //     .then(function(res){
+    //         setCurrentUser(true);
+    //     })
+    //     .catch(function(error){
+    //         setCurrentUser(false);
+    //     });
+    // }, []);
 
     const submitRegistration = async (e) => {
         e.preventDefault();
@@ -42,14 +42,14 @@ export default function SignupForm(){
     
     return(
         <Form className="signupForm" onSubmit={e => submitRegistration(e)}>
-            <Form.Group className="mb-3" controlId="formBasicEmail">
+            <Form.Group className="mb-3">
                 <Form.Label>First Name</Form.Label>
                 <Form.Control 
                     type="text" 
                     placeholder="Enter First Name"
                     onChange={e => setFirstName(e.target.value)}/>
             </Form.Group>
-            <Form.Group className="mb-3" controlId="formBasicEmail">
+            <Form.Group className="mb-3">
                 <Form.Label>Last Name</Form.Label>
                 <Form.Control 
                     type="text" 

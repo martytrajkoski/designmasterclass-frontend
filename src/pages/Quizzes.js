@@ -1,18 +1,20 @@
-import "../style/QuizzesStyle.scss"
-import Navibar from '../components/Navbar/Navibar'
-import QuizzesSearch from "../components/Quizzes/QuizzesSearch";
-import Footerbar from "../components/Footerbar/Footerbar"
-import QuizCard from "../components/Quizzes/QuizCard";
 import React, { useState } from "react";
+import Navibar from '../components/Navbar/Navibar';
+import QuizzesSearch from "../components/Quizzes/QuizzesSearch";
+import QuizCard from "../components/Quizzes/QuizCard";
+import Footerbar from "../components/Footerbar/Footerbar";
+import "../style/QuizzesStyle.scss";
 
-export default function Quizzes(){
+export default function Quizzes() {
     const [selectedCategory, setSelectedCategory] = useState(null);
-    return(
+    const [searchQuery, setSearchQuery] = useState("");
+
+    return (
         <div className="quizzes">
-            <Navibar/>
-            <QuizzesSearch setSelectedCategory={setSelectedCategory}/>
-            <QuizCard selectedCategory={selectedCategory}/>
-            <Footerbar/>
+            <Navibar />
+            <QuizzesSearch setSelectedCategory={setSelectedCategory} setSearchQuery={setSearchQuery} />
+            <QuizCard selectedCategory={selectedCategory} searchQuery={searchQuery} />
+            <Footerbar />
         </div>
     );
 }

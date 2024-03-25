@@ -1,11 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Patrick+Hand+SC&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Oxygen:wght@300&family=Patrick+Hand+SC&display=swap');
 
-.homepage{
+.homepage {
     background-color: #C4C4C4;
 }
 
-.homeSearch{
+.homeSearch {
     background-color: #6D659C;
     text-align: center;
     align-items: center;
@@ -13,7 +13,10 @@
     font-size: 40px;
     height: 280px;
     padding: 50px;
-    input{
+    display: flex;
+    flex-direction: column;
+
+    input {
         height: 45px;
         width: 450px;
         padding-left: 30px;
@@ -22,45 +25,107 @@
         font-size: 25px;
         box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.3);
     }
-    button{
+
+    select {
         height: 45px;
-        width: 70px;
+        width: 100px;
+        font-size: 25px;
         border: 1px solid #3C327B;
         border-radius: 0 36px 36px 0;
         background-color: #FC9C4B;
         box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.3);
     }
+
+    .searchDropdown {
+        position: relative;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+    
+    .dropdown-menu {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        border-radius: 20px;
+        background-color: #554f7ab9;
+        border: 0px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.7);
+        width: 550px;
+    }
+    
+    .dropdown-item {
+        &:hover {
+            background: none;
+            border-radius: 10px;
+        }
+        img {
+            margin-right: 10px;
+            padding: 0px;
+            height: 30px;
+        }
+    
+        span {
+            color: white;
+            font-size: 20px;
+            display: inline-block;
+            width: 350px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+    
+        .btn {
+            font-size: 20px;
+            background-color: #FC9C4B;
+            color: black;
+            float: right;
+            border: none;
+            &:hover {
+                border: 1px solid #b97136;
+                background-color: #b97136;
+                color: white;
+            }
+        }
+    }
+    
 }
 
-.vector1{
+
+.vector1 {
     background-image: url('../media/Homepage/Vector\ 1.png');
     background-size: auto 100%;
     margin-top: -1px;
 }
-.vector2{
+
+.vector2 {
     background-image: url('../media/Homepage/Vector\ 2.png');
     background-size: auto 100%;
 }
 
-.homeCard{
+.homeCard {
     text-align: center;
     height: 300px;
     padding: 50px 0 50px 0;
-    .homeTitle{
+
+    .homeTitle {
         font-family: 'Oxygen', sans-serif;
         font-size: 40px;
         color: #3C327B;
-        
+
     }
-    .homeCaption{
+
+    .homeCaption {
         font-family: 'Oxygen', sans-serif;
         font-size: 18px;
     }
-    img{
+
+    img {
         box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.3);
     }
 }
-.homePhotoshop{
+
+.homePhotoshop {
     .btn {
         background-color: #FC9C4B;
         color: black;
@@ -69,15 +134,18 @@
         width: 35%;
         margin: auto;
         box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.3);
-        &:hover{
+
+        &:hover {
             border: 1px solid #b97136;
             background-color: #b97136;
             color: white;
         }
     }
 }
-.homeIllustrator{
+
+.homeIllustrator {
     background-color: #FFAF6C;
+
     .btn {
         background-color: #6D659C;
         color: black;
@@ -86,7 +154,8 @@
         width: 35%;
         margin: auto;
         box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.3);
-        &:hover{
+
+        &:hover {
             border: 1px solid #5a5287;
             background-color: #5a5287;
             color: white;

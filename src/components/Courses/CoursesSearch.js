@@ -2,16 +2,17 @@ import React, { useState, useEffect } from "react";
 import { Form, Button } from "react-bootstrap";
 import axiosClient from "../../api/axiosClient";
 
-export default function CoursesSearch({ setSelectedCategory }) {
+export default function CoursesSearch({ setSelectedCategory, setSearchQuery }) {
   const [activeCategory, setActiveCategory] = useState("Photoshop");
   const [userData, setUserData] = useState(null);
+  const [filteredSearchItems, setFilteredSearchItems] = useState([]);
 
   useEffect(() => {
     handleCategoryChange("Photoshop");
   }, []);
 
   useEffect(() => {
-    const fetchCurrentUser = async() => {
+    const fetchCurrentUser = async () => {
         try {
             const response = await axiosClient.get('/api/userview/',{
                 headers:{
@@ -32,15 +33,17 @@ export default function CoursesSearch({ setSelectedCategory }) {
     setSelectedCategory(category);
   };
 
+  const handleSearch = (event) => {
+    const query = event.target.value.toLowerCase();
+    setSearchQuery(query);
+  };
+
   return (
     <div className="coursesSearch">
       <div className="searchBar">
         <Form>
           <Form.Group>
-            <input type="text" placeholder="Search course..." />
-            <Button>
-              <img src={require('../../media/Homepage/search white.png')} style={{ width: '30px' }} alt="Search"/>
-            </Button>
+            <input type="text" placeholder="Search course..." onChange={handleSearch} />
           </Form.Group>
         </Form>
       </div>
@@ -58,7 +61,6 @@ export default function CoursesSearch({ setSelectedCategory }) {
           ) : (
             <p></p>
           )}
-          
         </div>
       </div>
     </div>

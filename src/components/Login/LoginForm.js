@@ -1,15 +1,7 @@
 import { Form, Button } from "react-bootstrap"
-import { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import axiosClient from '../../api/axiosClient';
 import {useNavigate} from 'react-router-dom'
-
-// axios.defaults.xsrfCookieName = 'csrftoken';
-// axios.defaults.xsrfHeaderName = 'X-CSRFToken';
-// axios.defaults.withCredentials = true;
-
-// const client = axios.create({
-//   baseURL: "http://127.0.0.1:8000"
-// });
 
 export default function LoginForm(){
 
@@ -34,7 +26,7 @@ export default function LoginForm(){
         localStorage.setItem('token', token);
 
         if (response.status === 200){
-          navigate('/')
+          navigate(-1);
         }
 
       } catch (error) {
@@ -42,44 +34,6 @@ export default function LoginForm(){
         setPasswordErr("Invalid email or password")
       }
     }
-
-
-    // const [currentUser, setCurrentUser] = useState();
-    // const [email, setEmail] = useState('');
-    // const [password, setPassword] = useState('');
-
-      // function submitLogin(e) {
-      //   e.preventDefault();
-      //   client.post(
-      //     "/api/userlogin/",
-      //     {
-      //       email: email,
-      //       password: password
-      //     }
-      //   ).then(function(res) {
-      //     setCurrentUser(true);
-      //   });
-      // }
-
-      // function submitLogout(e) {
-      //   e.preventDefault();
-      //   client.post(
-      //     "/api/logout/",
-      //     {withCredentials: true}
-      //   ).then(function(res) {
-      //     setCurrentUser(false);
-      //   });
-      // }
-
-      // useEffect(() => {
-      //   axios.get("/api/userview/")
-      //   .then(function(res) {
-      //     setCurrentUser(true);
-      //   })
-      //   .catch(function(error) {
-      //     setCurrentUser(false);
-      //   });
-      // }, []);
 
     return(
         <Form className="loginForm" onSubmit={submitLogin}>

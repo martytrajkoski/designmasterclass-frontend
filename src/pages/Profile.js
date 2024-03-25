@@ -11,7 +11,7 @@ export default function Profile(){
             <Navibar></Navibar>
             <div className="content">
                 <ProfileComponent></ProfileComponent>
-                <SubscriptionComponent></SubscriptionComponent>
+                {/* <SubscriptionComponent></SubscriptionComponent> */}
             </div>
             <div className="saved">
                 <ProfileCourses />

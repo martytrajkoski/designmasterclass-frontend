@@ -23,7 +23,7 @@ export default function SideBar() {
 
     return(
       <div className='sideBar'>
-        <div className="sidebar-content" style={{ backgroundColor: '#554f7a' }}>
+        <div className="sidebar-content" >
           <div className='sidebar-link'>
             {data.map((tutorialName, i) => {
               return (

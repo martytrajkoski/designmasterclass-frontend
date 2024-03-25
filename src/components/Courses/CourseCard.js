@@ -1,22 +1,20 @@
 import React, { useEffect, useState } from "react";
 import axiosClient from "../../api/axiosClient";
 import { Button } from "react-bootstrap";
-import { API_URL } from "../../config/apiUrl"
+import { API_URL } from "../../config/apiUrl";
 
-
-export default function CourseCard({ selectedCategory }) {
+export default function CourseCard({ selectedCategory, searchQuery }) {
   const [data, setData] = useState([]);
   const [userData, setUserData] = useState(null);
   const [filteredData, setFilteredData] = useState([]);
   const [isCourseAddedArray, setIsCourseAddedArray] = useState([]);
-  const [saveButton, setSaveButton] = useState(false)
+  const [saveButton, setSaveButton] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axiosClient.get(
-          `${API_URL}/api/courses/`
-        );
+        const response = await axiosClient.get(`${API_URL}/api/courses/`);
+        console.log("Fetched data:", response.data); // Log fetched data
         setData(response.data);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -34,10 +32,11 @@ export default function CourseCard({ selectedCategory }) {
             Authorization: `Token ${localStorage.getItem("token")}`,
           },
         });
+        console.log("Fetched user data:", response.data); // Log fetched user data
         setUserData(response.data.user);
         setSaveButton(true);
       } catch (error) {
-        console.error("Error fetching user data"); 
+        console.error("Error fetching user data");
       }
     };
 
@@ -52,13 +51,20 @@ export default function CourseCard({ selectedCategory }) {
             Authorization: `Token ${localStorage.getItem("token")}`,
           },
         });
+        console.log("Fetched user courses:", response.data); // Log fetched user courses
         const userCourses = response.data.courses;
-        const savedCourseIds = userCourses.map(course => course.id);
-        
-        const newIsCourseAddedArray = data.map(course => savedCourseIds.includes(course.id));
+        const savedCourseIds = userCourses.map((course) => course.id);
+
+        const newIsCourseAddedArray = data.map((course) =>
+          savedCourseIds.includes(course.id)
+        );
+        console.log("New isCourseAddedArray:", newIsCourseAddedArray); // Log new isCourseAddedArray
         setIsCourseAddedArray(newIsCourseAddedArray);
-        
-        localStorage.setItem("savedCourses", JSON.stringify(newIsCourseAddedArray));
+
+        localStorage.setItem(
+          "savedCourses",
+          JSON.stringify(newIsCourseAddedArray)
+        );
       } catch (error) {
         console.error("Error fetching user courses:", error);
       }
@@ -74,12 +80,21 @@ export default function CourseCard({ selectedCategory }) {
     }
   }, []);
 
+  
   useEffect(() => {
     const filteredData = selectedCategory
       ? data.filter((item) => item.category === selectedCategory)
       : data;
-    setFilteredData(filteredData);
-  }, [data, selectedCategory]);
+    if (searchQuery) {
+      const query = searchQuery.toLowerCase();
+      const filteredItems = filteredData.filter(item =>
+        (item.name && item.name.toLowerCase().includes(query))
+      );
+      setFilteredData(filteredItems);
+    } else {
+      setFilteredData(filteredData);
+    }
+  }, [data, selectedCategory, searchQuery]);
 
   const handleAddToUser = async (courseId, index) => {
     try {
@@ -98,7 +113,7 @@ export default function CourseCard({ selectedCategory }) {
       console.error("Error adding course to user:", error);
     }
   };
-
+  
   const handleRemoveFromUser = async (courseId, index) => {
     try {
       const response = await axiosClient.post("/api/remove_course/", {
@@ -126,7 +141,7 @@ export default function CourseCard({ selectedCategory }) {
         },
         body: JSON.stringify({ course_id: courseId }),
       });
-  
+
       if (response.ok) {
         const data = await response.json();
         window.location.href = data; // Redirect to the checkout URL returned by the backend
@@ -138,54 +153,57 @@ export default function CourseCard({ selectedCategory }) {
       console.error("Error initiating checkout:", error);
       alert("Error initiating checkout. Please try again later.");
     }
-  };  
+  };
 
-  console.log(filteredData)
+  console.log("Filtered data:", filteredData);
 
   return (
     <div className="coursesPanel">
-      {filteredData.map((courseData, i) => {
+      {filteredData.map((courseData) => {
+        const index = data.findIndex((course) => course.id === courseData.id); // Find index based on courseId
         return (
-          <div className="courseCard" key={i}>
+          <div className="courseCard" key={courseData.id}>
             <div className="thumbnail">
               <img src={courseData.thumbnail} alt="thumbnail" />
             </div>
             <div className="courseDescription">
-              <span>${courseData.price}</span>
-              <span style={{ float: "right", marginRight: "1%", fontFamily: "inherit" }}>{courseData.length}</span>
+              <span>Price: ${courseData.price}</span>
+              <span style={{ float: "right", marginRight: "1%", fontFamily: "inherit" }}>
+                {courseData.length}
+              </span>
               <br />
               <p style={{ width: "100%", fontWeight: "bold" }}>{courseData.name}</p>
             </div>
-            <div className="cardButtons" style={{ display: "flex" }}>
-              <div style={{ width: "60%" }}>
+            <div className="courseInfo" style={{ display: "flex" }}>
+              <div className="courseArtist">
                 <span>{courseData.artist}</span>
               </div>
-              <div style={{ width: "40%", float: 'right'}}>
+              <div className="courseButtons">
                 <Button onClick={() => handleCheckout(courseData.id)}>Watch</Button>
                 {saveButton ? (
-                  <img 
-                  src={isCourseAddedArray[i] ? require("../../media/Icons/Saved.png") : require("../../media/Icons/notSaved.png")} 
-                  alt={isCourseAddedArray[i] ? "Saved" : "Not Saved"} 
-                  onClick={() => {
-                    if (isCourseAddedArray[i]) {
-                      handleRemoveFromUser(courseData.id, i);
-                    } else {
-                      handleAddToUser(courseData.id, i);
+                  <img
+                    src={
+                      isCourseAddedArray[index] // Use index instead of i
+                        ? require("../../media/Icons/Saved.png")
+                        : require("../../media/Icons/notSaved.png")
                     }
-                  }} 
-                  style={{ cursor: "pointer" }} 
-                />
-                ) : (
-                  null
-                )
-
-                }
-                
+                    alt={isCourseAddedArray[index] ? "Saved" : "Not Saved"}
+                    onClick={() => {
+                      if (isCourseAddedArray[index]) {
+                        handleRemoveFromUser(courseData.id, index);
+                      } else {
+                        handleAddToUser(courseData.id, index);
+                      }
+                    }}
+                    style={{ cursor: "pointer" }}
+                  />
+                ) : null}
               </div>
             </div>
           </div>
         );
       })}
+
     </div>
   );
 }

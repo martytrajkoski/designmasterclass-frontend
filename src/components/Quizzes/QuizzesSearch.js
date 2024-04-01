@@ -42,7 +42,8 @@ export default function QuizzesSearch({ setSelectedCategory, setSearchQuery }) {
       <div className="quizSearchBar">
         <Form>
           <Form.Group>
-            <input type="text" placeholder="Search quiz..." onChange={handleSearch} />          </Form.Group>
+            <input type="text" placeholder="Search quiz..." onChange={handleSearch} />
+          </Form.Group>
         </Form>
       </div>
       <div className="quizSearchButtons">

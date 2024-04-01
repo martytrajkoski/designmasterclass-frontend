@@ -52,7 +52,6 @@ export default function FooterRight(){
 
     return(
         <div className="footerRight">
-            <Button>Tutorials</Button>
             <Button onClick={navigateQuizzes}>Quizzes</Button>
             <Button onClick={navigateCourses}>Paid Courses</Button>
             <Button 

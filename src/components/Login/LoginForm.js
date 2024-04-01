@@ -5,7 +5,6 @@ import {useNavigate} from 'react-router-dom'
 
 export default function LoginForm(){
 
-    const [currentUser, setCurrentUser] = useState();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const errRef = useRef(null);

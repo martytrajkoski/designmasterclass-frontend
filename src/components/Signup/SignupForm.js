@@ -1,43 +1,51 @@
 import { Form, Button } from "react-bootstrap"
 import { useState, useEffect } from "react";
 import axiosClient from "../../api/axiosClient";
+import { useNavigate } from "react-router-dom";
 
 export default function SignupForm(){
 
-    const [currentUser, setCurrentUser] = useState();
-    const [registrationToggle, setRegistrationToggle] = useState(false);
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-
-    // useEffect(() => {
-    //     axiosClient.get("/api/userview/")
-    //     .then(function(res){
-    //         setCurrentUser(true);
-    //     })
-    //     .catch(function(error){
-    //         setCurrentUser(false);
-    //     });
-    // }, []);
+    const [passwordError, setPasswordErr] = useState("")
+    const navigate = useNavigate()
 
     const submitRegistration = async (e) => {
         e.preventDefault();
         try {
-            await axiosClient.post(
-                "/api/userregister/",
-                {
+            await axiosClient.post("/api/userregister/",{
                     firstName: firstName,
                     lastName: lastName,
                     email: email,
                     username: username,
                     password: password
-                }
-            );
+                });
         } catch (error){
             console.log('Cannot sign up')
         }
+
+        try{
+            const response = await axiosClient.post("/api/userlogin/",{
+                email: email,
+                password: password
+            });
+            
+            console.log(response);
+    
+            const {token} = response.data;
+            localStorage.setItem('token', token);
+    
+            if (response.status === 200){
+              navigate(-2);
+            }
+    
+          } catch (error) {
+            console.log('Invalid credentials')
+            setPasswordErr("Invalid email or password")
+          }
     }
     
     return(

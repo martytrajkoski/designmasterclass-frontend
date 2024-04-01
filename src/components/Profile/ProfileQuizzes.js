@@ -13,7 +13,7 @@ export default function ProfileQuizzes() {
     const fetchQuizzes = async () => {
       try {
         const response = await axiosClient.get(`${API_URL}/api/quizzes/`);
-        console.log("Fetched quizzes:", response.data); // Log fetched quizzes
+        console.log("Fetched quizzes:", response.data); 
         setQuizzes(response.data);
       } catch (error) {
         console.error('Error fetching quizzes:', error);
@@ -33,7 +33,7 @@ export default function ProfileQuizzes() {
             Authorization: `Token ${localStorage.getItem('token')}`
           }
         });
-        console.log("Fetched user data:", response.data); // Log fetched user data
+        console.log("Fetched user data:", response.data); 
         setUserData(response.data.user);
       } catch (error) {
         console.error('Error fetching user data');
@@ -51,12 +51,12 @@ export default function ProfileQuizzes() {
             Authorization: `Token ${localStorage.getItem("token")}`,
           },
         });
-        console.log("Fetched user quizzes:", response.data); // Log fetched user quizzes
+        console.log("Fetched user quizzes:", response.data); 
         const userQuizzes = response.data.quizzes;
         const savedQuizIds = userQuizzes.map(quiz => quiz.id);
         
         const newIsQuizAddedArray = quizzes.map(quiz => savedQuizIds.includes(quiz.id));
-        console.log("New isQuizAddedArray:", newIsQuizAddedArray); // Log new isQuizAddedArray
+        console.log("New isQuizAddedArray:", newIsQuizAddedArray); 
         setIsQuizAddedArray(newIsQuizAddedArray);
         
         localStorage.setItem("savedQuizzes", JSON.stringify(newIsQuizAddedArray));

@@ -14,7 +14,7 @@ export default function CourseCard({ selectedCategory, searchQuery }) {
     const fetchData = async () => {
       try {
         const response = await axiosClient.get(`${API_URL}/api/courses/`);
-        console.log("Fetched data:", response.data); // Log fetched data
+        console.log("Fetched data:", response.data); 
         setData(response.data);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -32,7 +32,7 @@ export default function CourseCard({ selectedCategory, searchQuery }) {
             Authorization: `Token ${localStorage.getItem("token")}`,
           },
         });
-        console.log("Fetched user data:", response.data); // Log fetched user data
+        console.log("Fetched user data:", response.data); 
         setUserData(response.data.user);
         setSaveButton(true);
       } catch (error) {
@@ -51,14 +51,14 @@ export default function CourseCard({ selectedCategory, searchQuery }) {
             Authorization: `Token ${localStorage.getItem("token")}`,
           },
         });
-        console.log("Fetched user courses:", response.data); // Log fetched user courses
+        console.log("Fetched user courses:", response.data); 
         const userCourses = response.data.courses;
         const savedCourseIds = userCourses.map((course) => course.id);
 
         const newIsCourseAddedArray = data.map((course) =>
           savedCourseIds.includes(course.id)
         );
-        console.log("New isCourseAddedArray:", newIsCourseAddedArray); // Log new isCourseAddedArray
+        console.log("New isCourseAddedArray:", newIsCourseAddedArray); 
         setIsCourseAddedArray(newIsCourseAddedArray);
 
         localStorage.setItem(
@@ -144,7 +144,7 @@ export default function CourseCard({ selectedCategory, searchQuery }) {
 
       if (response.ok) {
         const data = await response.json();
-        window.location.href = data; // Redirect to the checkout URL returned by the backend
+        window.location.href = data; 
       } else {
         console.error("Failed to initiate checkout");
         alert("Failed to initiate checkout. Please try again later.");
@@ -160,7 +160,7 @@ export default function CourseCard({ selectedCategory, searchQuery }) {
   return (
     <div className="coursesPanel">
       {filteredData.map((courseData) => {
-        const index = data.findIndex((course) => course.id === courseData.id); // Find index based on courseId
+        const index = data.findIndex((course) => course.id === courseData.id); 
         return (
           <div className="courseCard" key={courseData.id}>
             <div className="thumbnail">
@@ -183,7 +183,7 @@ export default function CourseCard({ selectedCategory, searchQuery }) {
                 {saveButton ? (
                   <img
                     src={
-                      isCourseAddedArray[index] // Use index instead of i
+                      isCourseAddedArray[index] 
                         ? require("../../media/Icons/Saved.png")
                         : require("../../media/Icons/notSaved.png")
                     }

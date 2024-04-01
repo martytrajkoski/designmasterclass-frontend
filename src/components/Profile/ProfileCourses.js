@@ -13,7 +13,7 @@ export default function ProfileCourses() {
     const fetchCourses = async () => {
       try {
         const response = await axiosClient.get(`${API_URL}/api/courses/`);
-        console.log("Fetched courses:", response.data); // Log fetched courses
+        console.log("Fetched courses:", response.data); 
         setCourses(response.data);
       } catch (error) {
         console.error('Error fetching courses:', error);
@@ -33,7 +33,7 @@ export default function ProfileCourses() {
             Authorization: `Token ${localStorage.getItem('token')}`
           }
         });
-        console.log("Fetched user data:", response.data); // Log fetched user data
+        console.log("Fetched user data:", response.data); 
         setUserData(response.data.user);
       } catch (error) {
         console.error('Error fetching user data');
@@ -51,12 +51,12 @@ export default function ProfileCourses() {
             Authorization: `Token ${localStorage.getItem("token")}`,
           },
         });
-        console.log("Fetched user courses:", response.data); // Log fetched user courses
+        console.log("Fetched user courses:", response.data); 
         const userCourses = response.data.courses;
         const savedCourseIds = userCourses.map(course => course.id);
         
         const newIsCourseAddedArray = courses.map(course => savedCourseIds.includes(course.id));
-        console.log("New isCourseAddedArray:", newIsCourseAddedArray); // Log new isCourseAddedArray
+        console.log("New isCourseAddedArray:", newIsCourseAddedArray); 
         setIsCourseAddedArray(newIsCourseAddedArray);
         
         localStorage.setItem("savedCourses", JSON.stringify(newIsCourseAddedArray));
@@ -81,7 +81,6 @@ export default function ProfileCourses() {
         user: userData.id,
         course: courseId,
       });
-      // console.log("Course added to user:", response.data);
       
       setIsCourseAddedArray(prevState => {
         const updatedArray = [...prevState];
@@ -113,6 +112,29 @@ export default function ProfileCourses() {
     }
   };    
 
+  const handleCheckout = async (courseId) => {
+    try {
+      const response = await fetch(`${API_URL}/api/create_checkout_session`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ course_id: courseId }),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        window.location.href = data; 
+      } else {
+        console.error("Failed to initiate checkout");
+        alert("Failed to initiate checkout. Please try again later.");
+      }
+    } catch (error) {
+      console.error("Error initiating checkout:", error);
+      alert("Error initiating checkout. Please try again later.");
+    }
+  };
+
   return (
     <div>
       <p className='type' id='courses'>Courses</p>
@@ -135,7 +157,7 @@ export default function ProfileCourses() {
                     <span>{courseData.artist}</span>
                   </div>
                   <div className="quizButtons">
-                    <Button href={courseData.url}>Watch</Button>
+                    <Button onClick={() => handleCheckout(courseData.id)}>Watch</Button>
                     <img 
                       src={isCourseAddedArray[i] ? require("../../media/Icons/Saved.png") : require("../../media/Icons/notSaved.png")} 
                       alt={isCourseAddedArray[i] ? "Saved" : "Not Saved"} 

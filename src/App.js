@@ -6,12 +6,10 @@ import { Route, Routes } from 'react-router-dom';
 import Profile from './pages/Profile';
 import LogIn from './pages/LogIn';
 import SignUp from './pages/SignUp';
-import SubsctiptionComponent from './components/Profile/SubscriptionComponent'
 import Photoshop from './pages/Photoshop';
 import Illustrator from './pages/Illustrator';
 import Courses from './pages/Courses';
 import Quizzes from './pages/Quizzes';
-import Payment from './pages/Payment';
 
 function App() {
   return (
@@ -22,12 +20,10 @@ function App() {
         <Route path="/login" element={<LogIn/>}/>
         <Route path="/signup" element={<SignUp/>}/>
         <Route path="/profile" element={<Profile/>}/>
-        <Route path="/subscription" element={<SubsctiptionComponent/>}/>
         <Route path='/photoshop' element={<Photoshop/>}/>
         <Route path='/illustrator' element={<Illustrator/>}/>
         <Route path='/courses' element={<Courses/>}/>
         <Route path='/quizzes' element={<Quizzes/>}/>
-        <Route path='/payment' element={<Payment/>}/>
       </Routes>
     </div>
     

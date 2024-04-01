@@ -5,7 +5,7 @@ import { API_URL } from "../../config/apiUrl";
 import '../../style/HomepageStyle.scss';
 
 export default function HomeSearch() {
-    const [searchType, setSearchType] = useState("courses"); // Default search type is courses
+    const [searchType, setSearchType] = useState("courses"); 
     const [courses, setCourses] = useState([]);
     const [quizzes, setQuizzes] = useState([]);
     const [searchQuery, setSearchQuery] = useState("");
@@ -18,11 +18,11 @@ export default function HomeSearch() {
     const fetchData = async () => {
         try {
             const coursesResponse = await axiosClient.get(`${API_URL}/api/courses/`);
-            console.log("Fetched courses:", coursesResponse.data); // Log fetched courses
+            console.log("Fetched courses:", coursesResponse.data); 
             setCourses(coursesResponse.data);
 
             const quizzesResponse = await axiosClient.get(`${API_URL}/api/quizzes/`);
-            console.log("Fetched quizzes:", quizzesResponse.data); // Log fetched quizzes
+            console.log("Fetched quizzes:", quizzesResponse.data); 
             setQuizzes(quizzesResponse.data);
         } catch (error) {
             console.error("Error fetching data:", error);
@@ -71,7 +71,7 @@ export default function HomeSearch() {
     
           if (response.ok) {
             const data = await response.json();
-            window.location.href = data; // Redirect to the checkout URL returned by the backend
+            window.location.href = data; 
           } else {
             console.error("Failed to initiate checkout");
             alert("Failed to initiate checkout. Please try again later.");
